@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "ApiKeys.h"
+
+@import GoogleMaps;
 
 @interface AppDelegate ()
 
@@ -17,7 +21,35 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //google maps api key
+    [GMSServices provideAPIKey:@"AIzaSyAI9pAepJYW1lixK72EFXKAIAWQfm6ONeA"];
+    
+    
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _viewController = [[ViewController alloc] init];
+    _navController = [[UINavigationController alloc] initWithRootViewController:_viewController];
+    _window.rootViewController = _navController;
+    [_window makeKeyAndVisible];
+    
+    [self authenticateIALocationManager];
+    
+    //notification allow
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
+        
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    
     return YES;
+}
+
+-(void) authenticateIALocationManager {
+    
+    //Get IALocationManager shared instance
+    IALocationManager *locationManager = [IALocationManager sharedInstance];
+    
+    //Set IndoorAtlas API key and secret
+    [locationManager setApiKey:kAPIKey andSecret:kAPISecret];
 }
 
 

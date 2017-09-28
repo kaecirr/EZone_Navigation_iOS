@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MapScreenVC.h"
+#import "CalibrationIndicator.h"
 
-@interface ViewController : UIViewController
+@import IndoorAtlas;
 
+@interface ViewController : UIViewController <IALocationManagerDelegate> {
+    NSTimer *timer;
+    
+}
+
+
+-(void)loadSreenUI;
+
+-(void) loadNextScreen;
 
 @end
 

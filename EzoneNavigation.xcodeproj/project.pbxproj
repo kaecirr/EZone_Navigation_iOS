@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CD0266C6C6E8B76D0595D28 /* Pods_EzoneNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71C8C1894777A8C9DC5B1C5 /* Pods_EzoneNavigation.framework */; };
 		7A15E10D1F64005D00054933 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E10C1F64005D00054933 /* main.m */; };
 		7A15E1101F64005D00054933 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E10F1F64005D00054933 /* AppDelegate.m */; };
 		7A15E1131F64005D00054933 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E1121F64005D00054933 /* ViewController.m */; };
@@ -15,6 +16,11 @@
 		7A15E11B1F64005D00054933 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A15E1191F64005D00054933 /* LaunchScreen.storyboard */; };
 		7A15E1261F64005D00054933 /* EzoneNavigationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E1251F64005D00054933 /* EzoneNavigationTests.m */; };
 		7A15E1311F64005D00054933 /* EzoneNavigationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E1301F64005D00054933 /* EzoneNavigationUITests.m */; };
+		7A15E13F1F64061000054933 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7A15E13E1F64061000054933 /* Podfile */; };
+		7A15E1421F64147400054933 /* MapScreenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E1411F64147400054933 /* MapScreenVC.m */; };
+		7A52A9A71F7D1279001B2191 /* NodesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52A9A61F7D1279001B2191 /* NodesParser.m */; };
+		7A7DC6D11F6E323400AFAE84 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7DC6D01F6E323400AFAE84 /* MapKit.framework */; };
+		7A84A7FC1F6C095E009FB41B /* CalibrationIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A84A7FB1F6C095E009FB41B /* CalibrationIndicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07479EE18D1A8B7FB9D1B0F8 /* Pods-EzoneNavigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EzoneNavigation.release.xcconfig"; path = "Pods/Target Support Files/Pods-EzoneNavigation/Pods-EzoneNavigation.release.xcconfig"; sourceTree = "<group>"; };
 		7A15E1081F64005D00054933 /* EzoneNavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EzoneNavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A15E10C1F64005D00054933 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A15E10E1F64005D00054933 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +58,17 @@
 		7A15E12C1F64005D00054933 /* EzoneNavigationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EzoneNavigationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A15E1301F64005D00054933 /* EzoneNavigationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EzoneNavigationUITests.m; sourceTree = "<group>"; };
 		7A15E1321F64005D00054933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A15E13E1F64061000054933 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7A15E1401F64147400054933 /* MapScreenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScreenVC.h; sourceTree = "<group>"; };
+		7A15E1411F64147400054933 /* MapScreenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapScreenVC.m; sourceTree = "<group>"; };
+		7A52A9A51F7D1279001B2191 /* NodesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodesParser.h; sourceTree = "<group>"; };
+		7A52A9A61F7D1279001B2191 /* NodesParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodesParser.m; sourceTree = "<group>"; };
+		7A7DC6D01F6E323400AFAE84 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7A84A7FA1F6C095E009FB41B /* CalibrationIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationIndicator.h; sourceTree = "<group>"; };
+		7A84A7FB1F6C095E009FB41B /* CalibrationIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationIndicator.m; sourceTree = "<group>"; };
+		7ADF5DED1F657EBD00B0A9F3 /* ApiKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKeys.h; sourceTree = "<group>"; };
+		A71C8C1894777A8C9DC5B1C5 /* Pods_EzoneNavigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EzoneNavigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B50773BDAE701216D181541A /* Pods-EzoneNavigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EzoneNavigation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EzoneNavigation/Pods-EzoneNavigation.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7DC6D11F6E323400AFAE84 /* MapKit.framework in Frameworks */,
+				0CD0266C6C6E8B76D0595D28 /* Pods_EzoneNavigation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,13 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74BF87C9440114587A18FA2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A7DC6D01F6E323400AFAE84 /* MapKit.framework */,
+				A71C8C1894777A8C9DC5B1C5 /* Pods_EzoneNavigation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7A15E0FF1F64005D00054933 = {
 			isa = PBXGroup;
 			children = (
+				7A15E13E1F64061000054933 /* Podfile */,
 				7A15E10A1F64005D00054933 /* EzoneNavigation */,
 				7A15E1241F64005D00054933 /* EzoneNavigationTests */,
 				7A15E12F1F64005D00054933 /* EzoneNavigationUITests */,
 				7A15E1091F64005D00054933 /* Products */,
+				D86D5E1165229F303BB92A18 /* Pods */,
+				74BF87C9440114587A18FA2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +133,17 @@
 		7A15E10A1F64005D00054933 /* EzoneNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				7ADF5DED1F657EBD00B0A9F3 /* ApiKeys.h */,
 				7A15E10E1F64005D00054933 /* AppDelegate.h */,
 				7A15E10F1F64005D00054933 /* AppDelegate.m */,
 				7A15E1111F64005D00054933 /* ViewController.h */,
 				7A15E1121F64005D00054933 /* ViewController.m */,
+				7A15E1401F64147400054933 /* MapScreenVC.h */,
+				7A15E1411F64147400054933 /* MapScreenVC.m */,
+				7A84A7FA1F6C095E009FB41B /* CalibrationIndicator.h */,
+				7A84A7FB1F6C095E009FB41B /* CalibrationIndicator.m */,
+				7A52A9A51F7D1279001B2191 /* NodesParser.h */,
+				7A52A9A61F7D1279001B2191 /* NodesParser.m */,
 				7A15E1141F64005D00054933 /* Main.storyboard */,
 				7A15E1171F64005D00054933 /* Assets.xcassets */,
 				7A15E1191F64005D00054933 /* LaunchScreen.storyboard */,
@@ -140,6 +179,15 @@
 			path = EzoneNavigationUITests;
 			sourceTree = "<group>";
 		};
+		D86D5E1165229F303BB92A18 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B50773BDAE701216D181541A /* Pods-EzoneNavigation.debug.xcconfig */,
+				07479EE18D1A8B7FB9D1B0F8 /* Pods-EzoneNavigation.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A15E1351F64005D00054933 /* Build configuration list for PBXNativeTarget "EzoneNavigation" */;
 			buildPhases = (
+				7C484B89366ED3C90B6E77BB /* [CP] Check Pods Manifest.lock */,
 				7A15E1041F64005D00054933 /* Sources */,
 				7A15E1051F64005D00054933 /* Frameworks */,
 				7A15E1061F64005D00054933 /* Resources */,
+				7CA8C7ED9A675D3422BD2A3E /* [CP] Embed Pods Frameworks */,
+				BC45CF4C83501CF041926CB7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,6 +260,11 @@
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 32WC8E8NPA;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					7A15E1201F64005D00054933 = {
 						CreatedOnToolsVersion = 8.3;
@@ -251,6 +307,7 @@
 			files = (
 				7A15E11B1F64005D00054933 /* LaunchScreen.storyboard in Resources */,
 				7A15E1181F64005D00054933 /* Assets.xcassets in Resources */,
+				7A15E13F1F64061000054933 /* Podfile in Resources */,
 				7A15E1161F64005D00054933 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,14 +328,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7C484B89366ED3C90B6E77BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EzoneNavigation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CA8C7ED9A675D3422BD2A3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EzoneNavigation/Pods-EzoneNavigation-frameworks.sh",
+				"${PODS_ROOT}/IndoorAtlas/indooratlas-ios-sdk/IndoorAtlas.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IndoorAtlas.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EzoneNavigation/Pods-EzoneNavigation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC45CF4C83501CF041926CB7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EzoneNavigation/Pods-EzoneNavigation-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EzoneNavigation/Pods-EzoneNavigation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7A15E1041F64005D00054933 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A84A7FC1F6C095E009FB41B /* CalibrationIndicator.m in Sources */,
 				7A15E1131F64005D00054933 /* ViewController.m in Sources */,
 				7A15E1101F64005D00054933 /* AppDelegate.m in Sources */,
 				7A15E10D1F64005D00054933 /* main.m in Sources */,
+				7A52A9A71F7D1279001B2191 /* NodesParser.m in Sources */,
+				7A15E1421F64147400054933 /* MapScreenVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +476,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -374,7 +493,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -406,6 +525,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -416,7 +536,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -425,6 +545,7 @@
 		};
 		7A15E1361F64005D00054933 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B50773BDAE701216D181541A /* Pods-EzoneNavigation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 32WC8E8NPA;
@@ -437,6 +558,7 @@
 		};
 		7A15E1371F64005D00054933 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07479EE18D1A8B7FB9D1B0F8 /* Pods-EzoneNavigation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 32WC8E8NPA;
@@ -516,6 +638,7 @@
 				7A15E1371F64005D00054933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A15E1381F64005D00054933 /* Build configuration list for PBXNativeTarget "EzoneNavigationTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +647,7 @@
 				7A15E13A1F64005D00054933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A15E13B1F64005D00054933 /* Build configuration list for PBXNativeTarget "EzoneNavigationUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +656,7 @@
 				7A15E13D1F64005D00054933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
