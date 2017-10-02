@@ -20,13 +20,16 @@
 
 -(void)getPathDetails {
     
-    NSArray *reqObjectsArray = [NSArray arrayWithObjects:@"computerScience", @"second", @"31.2", @"29.8", @"31.8", @"29.6", nil];
+    NSArray *reqObjectsArray = @[@"computerScience", @"second", @"-31.97444473", @"115.8599", @"-31.97222274", @"115.823", @"DJ"];
     
-    NSArray *reqKeysArray = [NSArray arrayWithObjects:@"building", @"floor", @"startLongitude", @"startLatitude", @"endLongitude", @"endLatitude", nil];
+    NSArray *reqKeysArray = @[@"building", @"floor", @"startLongitude", @"startLatitude", @"endLongitude", @"endLatitude", @"algorithm"];
     
     NSDictionary *requestDataDict = [NSDictionary dictionaryWithObjects:reqObjectsArray forKeys:reqKeysArray];
     
-    NSDictionary *jsonRequestDict = [NSDictionary dictionaryWithObject:requestDataDict forKey:@"requestData"];
+    
+    NSMutableDictionary *jsonRequestDict = [NSMutableDictionary dictionaryWithObject:@"" forKey:@"requestMessage"];
+    
+    [jsonRequestDict setObject:requestDataDict forKey:@"mapDataRequest"];
     
     NSLog(@"json request dictionary is %@",jsonRequestDict);
     
@@ -34,9 +37,9 @@
     
     NSData *jsonRequestData = [NSJSONSerialization dataWithJSONObject:jsonRequestDict options:0 error:&error];
     
-    NSURL *url = [NSURL URLWithString:@"http://52.64.190.66:8080/springMVC-1.0-SNAPSHOT/"];
+    NSURL *url = [NSURL URLWithString:@"http://52.64.190.66:8080/springMVC-1.0-SNAPSHOT/path"];
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:60.0];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -46,8 +49,6 @@
     
     NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
     
-    //[NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:nil];
-
 }
 
 #pragma mark NSURLConnection Delegate Methods
@@ -64,13 +65,14 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [responseData appendData:data];
     
-    NSLog(@"response data in didReceiveData is %@", responseData);
+//    NSLog(@"response data in didReceiveData is %@", responseData);
+    
     
     NSError *error;
     
     //AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
 
-    NSDictionary *dictResponseJSON =[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSDictionary *dictResponseJSON =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     
     NSLog(@"response dictionay in didReceiveData is %@", dictResponseJSON);
     
@@ -85,11 +87,11 @@
 }
 
 -(void) processResponseData: (NSData *) data {
-    NSError *error;
-    
-    NSDictionary *dictResponseJSON =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-    
-    NSLog(@"response dictionay in didFinishLoading is %@", dictResponseJSON);
+//    NSError *error;
+//    
+//    NSDictionary *dictResponseJSON =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+//    
+//    NSLog(@"response dictionay in processData is %@", dictResponseJSON);
 }
 
 @end

@@ -105,10 +105,10 @@
     
     updateCamera = true;
     
-    mapView = [MKMapView new];
-    [self.view addSubview:mapView];
-    mapView.frame = self.view.bounds;
-    mapView.delegate = self;
+    self.mapView = [MKMapView new];
+    [self.view addSubview:self.mapView];
+    self.mapView.frame = self.view.bounds;
+    self.mapView.delegate = self;
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foundTap:)];
     
@@ -164,11 +164,21 @@
         mapOverlayRenderer.floorPlan = self.floorPlan;
         mapOverlayRenderer.image = fpImage;
         return mapOverlayRenderer;
+    } else if (overlay == self.polyline) {
+        MKPolylineRenderer *polylineView = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+        
+        // Custom polylineView
+        polylineView.strokeColor =  [UIColor orangeColor];
+        polylineView.lineWidth = 2.0;
+        polylineView.alpha = 0.5;
+        
+        return polylineView;
     } else {
         MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithCircle:(MKCircle *)overlay];
         circleRenderer.fillColor =  [UIColor colorWithRed:1 green:0 blue:0 alpha:1.0];
         return circleRenderer;
     }
+
 }
 
 - (void)changeMapOverlay {
@@ -263,7 +273,7 @@
     (void)manager;
     
     CLLocation *clLocation = [(IALocation*)locations.lastObject location];
-    NSLog(@"position changed to coordinate (lat,lon): %f, %f", clLocation.coordinate.latitude, clLocation.coordinate.longitude);
+    //NSLog(@"position changed to coordinate (lat,lon): %f, %f", clLocation.coordinate.latitude, clLocation.coordinate.longitude);
     
     if (self.circle != nil) {
         [mapView removeOverlay:self.circle];
@@ -328,12 +338,12 @@
 
 -(void) foundTap:(UITapGestureRecognizer *)recognizer  {
     
-    if (mapView.annotations.count > 0) {
-        [mapView removeAnnotations:mapView.annotations];
+    if (self.mapView.annotations.count > 0) {
+        [self.mapView removeAnnotations:self.mapView.annotations];
     }
     CGPoint point = [recognizer locationInView:self.self.mapView];
     
-    CLLocationCoordinate2D tapPoint = [self.self.mapView convertPoint:point toCoordinateFromView:self.view];
+    CLLocationCoordinate2D tapPoint = [self.mapView convertPoint:point toCoordinateFromView:self.view];
     
     MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
     
@@ -343,8 +353,47 @@
     
     nodesParser = [[NodesParser alloc] init];
     
+    [self drawLine];
+    
     [nodesParser getPathDetails];
+    
+    
 }
+
+-(void) drawLine {
+    //remove polyline if previously present
+    
+    [self.mapView removeOverlay:self.polyline];
+
+    NSDictionary *dict1 = @{@"location": @"room2.10", @"longitude": @"115.81593823", @"latitude": @"-31.97764684"};
+    NSDictionary *dict2 = @{@"location": @"room2.12", @"longitude": @"115.8599", @"latitude": @"-31.97444473"};
+    NSDictionary *dict3 = @{@"location": @"room2.14", @"longitude": @"31.4", @"latitude": @"29.5"};
+    NSDictionary *dict4 = @{@"location": @"room2.16", @"longitude": @"31.5", @"latitude": @"29.3"};
+    
+    NSArray *pathArray = @[dict1, dict2];
+    
+    //fetch lat long from the array and save it in cllocationcooardinate2d
+    CLLocationCoordinate2D coordinates[pathArray.count];
+
+    for (int i=0; i< pathArray.count; i++) {
+        coordinates[i] = CLLocationCoordinate2DMake([[[pathArray objectAtIndex:i] objectForKey:@"longitude"] floatValue], [[[pathArray objectAtIndex:i] objectForKey:@"latitude"] floatValue]);
+    }
+    
+    
+    // create a polyline with all cooridnates
+    MKPolyline *polyline = [MKPolyline polylineWithCoordinates: coordinates count:pathArray.count];
+    [self.mapView addOverlay:polyline];
+    self.polyline = polyline;
+    
+    //NSLog(@"array is %@",pathArray);
+    
+    // create an MKPolylineView and add it to the map view
+//    self.polyLineView = [[MKPolylineView alloc] initWithPolyline:self.polyline];
+//    self.polyLineView.strokeColor = [UIColor redColor];
+//    self.polyLineView.lineWidth = 5;
+    
+}
+
 
 #pragma mark Warning Method
 
@@ -352,6 +401,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

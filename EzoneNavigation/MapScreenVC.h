@@ -30,6 +30,8 @@
 
 @property(nonatomic, strong) IALocationManager *locationManager;
 @property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) MKPolyline *polyline;
+@property (nonatomic, strong) MKPolylineView *polyLineView;
 
 -(void) requestLocation;
 
