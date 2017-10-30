@@ -20,9 +20,11 @@
 
 -(void)getPathDetails {
     
-    NSArray *reqObjectsArray = @[@"computerScience", @"second", @"-31.97444473", @"115.8599", @"-31.97222274", @"115.823", @"DJ"];
-    
+    NSArray *reqObjectsArray = @[@"ComputerScience", @"second", @"-31.97444473", @"115.8599", @"-31.97222274", @"115.823", @"DJ"];
+
     NSArray *reqKeysArray = @[@"building", @"floor", @"startLongitude", @"startLatitude", @"endLongitude", @"endLatitude", @"algorithm"];
+
+//    NSArray *reqKeysArray = @[@"startBuildingName", @"startFloor", @"startLongitude", @"startLatitude", @"endBuildingName", @"endFloor", @"endLongitude", @"endLatitude", @"algorithm"];
     
     NSDictionary *requestDataDict = [NSDictionary dictionaryWithObjects:reqObjectsArray forKeys:reqKeysArray];
     

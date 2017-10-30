@@ -164,7 +164,7 @@
         mapOverlayRenderer.floorPlan = self.floorPlan;
         mapOverlayRenderer.image = fpImage;
         return mapOverlayRenderer;
-    } else if (overlay == self.polyline) {
+    } else if ([overlay isKindOfClass:[MKPolyline class]]) {
         MKPolylineRenderer *polylineView = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
         
         // Custom polylineView
