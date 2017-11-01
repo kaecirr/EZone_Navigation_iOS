@@ -20,18 +20,16 @@
 
 -(void)getPathDetails {
     
-    NSArray *reqObjectsArray = @[@"ComputerScience", @"second", @"-31.97444473", @"115.8599", @"-31.97222274", @"115.823", @"DJ"];
+    NSArray *reqObjectsArray = @[@"ComputerScience", @"2", @"-31.97444473", @"115.8599", @"ComputerScience", @"2", @"-31.97222274", @"115.823", @"DJ"];
 
-    NSArray *reqKeysArray = @[@"building", @"floor", @"startLongitude", @"startLatitude", @"endLongitude", @"endLatitude", @"algorithm"];
-
-//    NSArray *reqKeysArray = @[@"startBuildingName", @"startFloor", @"startLongitude", @"startLatitude", @"endBuildingName", @"endFloor", @"endLongitude", @"endLatitude", @"algorithm"];
+    NSArray *reqKeysArray = @[@"startBuildingName", @"startFloor", @"startLongitude", @"startLatitude", @"endBuildingName", @"endFloor", @"endLongitude", @"endLatitude", @"algorithm"];
     
     NSDictionary *requestDataDict = [NSDictionary dictionaryWithObjects:reqObjectsArray forKeys:reqKeysArray];
     
     
     NSMutableDictionary *jsonRequestDict = [NSMutableDictionary dictionaryWithObject:@"" forKey:@"requestMessage"];
     
-    [jsonRequestDict setObject:requestDataDict forKey:@"mapDataRequest"];
+    [jsonRequestDict setObject:requestDataDict forKey:@"pathData"];
     
     NSLog(@"json request dictionary is %@",jsonRequestDict);
     
@@ -66,21 +64,6 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [responseData appendData:data];
-    
-//    NSLog(@"response data in didReceiveData is %@", responseData);
-    
-    
-    NSError *error;
-    
-    //AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-
-    NSDictionary *dictResponseJSON =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-    
-    NSLog(@"response dictionay in didReceiveData is %@", dictResponseJSON);
-    
-    if(error) {
-        NSLog(@"error didReceiveData is %@", error.description);
-    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -89,11 +72,20 @@
 }
 
 -(void) processResponseData: (NSData *) data {
-//    NSError *error;
-//    
-//    NSDictionary *dictResponseJSON =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-//    
-//    NSLog(@"response dictionay in processData is %@", dictResponseJSON);
+    NSError *error;
+    
+    NSDictionary *dictNodesResponseJSON =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    
+    NSLog(@"response dictionay in processData is %@", dictNodesResponseJSON);
+    
+    if(error) {
+        NSLog(@"error processResponseData is %@", error.description);
+    }
+    
+    if (self.NodesDelegate != nil)
+    {
+        [self.NodesDelegate NodesParserDidReceiveData:dictNodesResponseJSON];
+    }
 }
 
 @end

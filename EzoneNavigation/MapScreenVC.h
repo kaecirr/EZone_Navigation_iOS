@@ -15,7 +15,7 @@
 @import IndoorAtlas;
 
 
-@interface MapScreenVC : UIViewController <MKMapViewDelegate, IALocationManagerDelegate> {
+@interface MapScreenVC : UIViewController <MKMapViewDelegate, IALocationManagerDelegate, NodesParserDelegate> {
     
     id<IAFetchTask> floorPlanFetch;
     id<IAFetchTask> imageFetch;
@@ -26,6 +26,9 @@
     Boolean updateCamera;
     
     NodesParser *nodesParser;
+    
+    NSMutableArray  *arrayOfNodesPathPoint;
+    
 }
 
 @property(nonatomic, strong) IALocationManager *locationManager;

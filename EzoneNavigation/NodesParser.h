@@ -8,9 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol NodesParserDelegate <NSObject>
+
+-(void) NodesParserDidReceiveData:(NSDictionary *) dictOfNodesParser;
+-(void) NodesParserDidReceiveError:(NSError *) error;
+
+@end
+
+
 @interface NodesParser : NSObject <NSURLConnectionDelegate> {
     NSMutableData   *responseData;
 }
+
+@property (nonatomic, weak) id  <NodesParserDelegate> NodesDelegate;
 
 -(void) getPathDetails;
 

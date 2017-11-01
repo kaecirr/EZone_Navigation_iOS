@@ -110,13 +110,9 @@
     self.mapView.frame = self.view.bounds;
     self.mapView.delegate = self;
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foundTap:)];
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTap:)];
     
-    tapRecognizer.numberOfTapsRequired = 1;
-    
-    tapRecognizer.numberOfTouchesRequired = 1;
-    
-    [self.mapView addGestureRecognizer:tapRecognizer];
+    [self.mapView addGestureRecognizer:longPressRecognizer];
     
     [self requestLocation];
 }
@@ -336,27 +332,61 @@
 
 #pragma mark Tap Gesture Method
 
--(void) foundTap:(UITapGestureRecognizer *)recognizer  {
+-(void) longTap:(UILongPressGestureRecognizer *)recognizer  {
     
-    if (self.mapView.annotations.count > 0) {
-        [self.mapView removeAnnotations:self.mapView.annotations];
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        if (self.mapView.annotations.count > 0) {
+            [self.mapView removeAnnotations:self.mapView.annotations];
+        }
+        CGPoint point = [recognizer locationInView:self.self.mapView];
+        
+        CLLocationCoordinate2D tapPoint = [self.mapView convertPoint:point toCoordinateFromView:self.view];
+        
+        //    NSLog(@"tap point is %f and long is %f",tapPoint.latitude, tapPoint.longitude);
+        
+        
+        MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
+        
+        point1.coordinate = tapPoint;
+        
+        [self.mapView addAnnotation:point1];
+        
+        nodesParser = [[NodesParser alloc] init];
+        nodesParser.NodesDelegate = self;
+        
+//        [self drawLine];
+        
+        [nodesParser getPathDetails];
+    
     }
-    CGPoint point = [recognizer locationInView:self.self.mapView];
-    
-    CLLocationCoordinate2D tapPoint = [self.mapView convertPoint:point toCoordinateFromView:self.view];
-    
-    MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
-    
-    point1.coordinate = tapPoint;
-    
-    [self.mapView addAnnotation:point1];
-    
-    nodesParser = [[NodesParser alloc] init];
-    
-    [self drawLine];
-    
-    [nodesParser getPathDetails];
-    
+}
+
+-(void) NodesParserDidReceiveData:(NSDictionary *) dictOfNodesParser {
+    if ([[dictOfNodesParser valueForKey:@"responseMessage"] isEqualToString:@"SUCCESS"]) {
+        arrayOfNodesPathPoint = [[NSMutableArray alloc] init];
+        arrayOfNodesPathPoint = [[dictOfNodesParser valueForKey:@"mapData"] valueForKey:@"path"];
+        
+        NSLog(@"array of nodes point is %@", arrayOfNodesPathPoint);
+        
+        CLLocationCoordinate2D coordLocations[arrayOfNodesPathPoint.count];
+
+        for (int i=0; i< arrayOfNodesPathPoint.count; i++) {
+            double latitudeNode = [[[arrayOfNodesPathPoint objectAtIndex:i] valueForKey:@"latitude"] doubleValue];
+            double longitudeNode = [[[arrayOfNodesPathPoint objectAtIndex:i] valueForKey:@"longitude"] doubleValue];
+            
+//            CLLocationCoordinate2D destination = CLLocationCoordinate2DMake( latitudeNode, longitudeNode);
+            
+            coordLocations[i] = CLLocationCoordinate2DMake( latitudeNode, longitudeNode);
+//            NSLog(@"coordinate location array index %d and value is %@", i, coordLocations[i]);
+            
+        }
+//        NSLog(@"coordinate locations array is %@", coordLocations);
+        
+        
+    }
+}
+-(void) NodesParserDidReceiveError:(NSError *) error {
     
 }
 
