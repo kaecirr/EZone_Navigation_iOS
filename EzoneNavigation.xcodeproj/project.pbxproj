@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CD0266C6C6E8B76D0595D28 /* Pods_EzoneNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71C8C1894777A8C9DC5B1C5 /* Pods_EzoneNavigation.framework */; };
+		7A1080D11FA9D688000B6C35 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1080D01FA9D67A000B6C35 /* CoreLocation.framework */; };
 		7A15E10D1F64005D00054933 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E10C1F64005D00054933 /* main.m */; };
 		7A15E1101F64005D00054933 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E10F1F64005D00054933 /* AppDelegate.m */; };
 		7A15E1131F64005D00054933 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E1121F64005D00054933 /* ViewController.m */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		07479EE18D1A8B7FB9D1B0F8 /* Pods-EzoneNavigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EzoneNavigation.release.xcconfig"; path = "Pods/Target Support Files/Pods-EzoneNavigation/Pods-EzoneNavigation.release.xcconfig"; sourceTree = "<group>"; };
+		7A1080D01FA9D67A000B6C35 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7A15E1081F64005D00054933 /* EzoneNavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EzoneNavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A15E10C1F64005D00054933 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A15E10E1F64005D00054933 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1080D11FA9D688000B6C35 /* CoreLocation.framework in Frameworks */,
 				7A7DC6D11F6E323400AFAE84 /* MapKit.framework in Frameworks */,
 				0CD0266C6C6E8B76D0595D28 /* Pods_EzoneNavigation.framework in Frameworks */,
 			);
@@ -101,6 +104,7 @@
 		74BF87C9440114587A18FA2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A1080D01FA9D67A000B6C35 /* CoreLocation.framework */,
 				7A7DC6D01F6E323400AFAE84 /* MapKit.framework */,
 				A71C8C1894777A8C9DC5B1C5 /* Pods_EzoneNavigation.framework */,
 			);

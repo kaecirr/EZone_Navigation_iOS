@@ -11,11 +11,13 @@
 #import "CalibrationIndicator.h"
 #import <MapKit/MapKit.h>
 #import "NodesParser.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 @import IndoorAtlas;
 
 
-@interface MapScreenVC : UIViewController <MKMapViewDelegate, IALocationManagerDelegate, NodesParserDelegate> {
+@interface MapScreenVC : UIViewController <MKMapViewDelegate, IALocationManagerDelegate, NodesParserDelegate, CLLocationManagerDelegate> {
     
     id<IAFetchTask> floorPlanFetch;
     id<IAFetchTask> imageFetch;
@@ -25,6 +27,7 @@
     MKMapCamera *camera;
     Boolean updateCamera;
     
+//    CLLocationManager *clLocationManager;
     NodesParser *nodesParser;
     
     NSMutableArray  *arrayOfNodesPathPoint;

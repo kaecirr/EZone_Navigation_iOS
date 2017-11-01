@@ -114,6 +114,8 @@
     
     [self.mapView addGestureRecognizer:longPressRecognizer];
     
+    
+    
     [self requestLocation];
 }
 
@@ -276,6 +278,7 @@
     }
     
     self.circle = [MKCircle circleWithCenterCoordinate:clLocation.coordinate radius:1];
+    
     [mapView addOverlay:self.circle];
     if (updateCamera) {
         updateCamera = false;
@@ -381,8 +384,9 @@
 //            NSLog(@"coordinate location array index %d and value is %@", i, coordLocations[i]);
             
         }
-//        NSLog(@"coordinate locations array is %@", coordLocations);
         
+        MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordLocations count:arrayOfNodesPathPoint.count];
+        [self.mapView addOverlay:polyLine];
         
     }
 }
