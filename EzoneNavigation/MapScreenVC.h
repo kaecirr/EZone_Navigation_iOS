@@ -37,6 +37,8 @@
     
     UIButton    *btnUpFloor;
     UIButton    *btnDownFloor;
+    UIButton    *btnStartNavigation;
+    Boolean     startedNavigation;
     
 }
 
@@ -48,5 +50,6 @@
 
 -(void) requestLocation;
 -(void) upDownFloorChangeButtonClicked:(UIButton *) sender;
+-(void) startNavigationButtonClicked;
 
 @end

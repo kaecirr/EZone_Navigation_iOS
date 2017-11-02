@@ -105,6 +105,8 @@
     
     updateCamera = true;
     
+    startedNavigation = FALSE;
+    
     self.mapView = [MKMapView new];
 
     [self.view addSubview:self.mapView];
@@ -133,6 +135,15 @@
     btnDownFloor.tag = 1;
     [self.mapView addSubview:btnDownFloor];
 
+    //start nav btn used to start the navigation while updating the path user current location. currently its disabled
+    btnStartNavigation = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnStartNavigation addTarget:self action:@selector(startNavigationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    btnStartNavigation.frame = CGRectMake(0, self.view.frame.size.height - 30.0, self.view.frame.size.width, 30.0);
+    [btnStartNavigation setTitle:@"Start Navigation" forState:UIControlStateNormal];
+    btnStartNavigation.backgroundColor = [UIColor blueColor];
+    btnStartNavigation.hidden = TRUE;
+    [self.view addSubview:btnStartNavigation];
+    
     
     [self requestLocation];
 
@@ -312,6 +323,10 @@
             camera.centerCoordinate = clCurrentLocation.coordinate;
         }
     }
+    
+    if (startedNavigation == TRUE) {
+        [nodesParser getPathDetailsWithCurrentLocation: clCurrentLocation andDestinationLocation: clDestinationLocation];
+    }
 }
 
 
@@ -377,6 +392,8 @@
         
         [self.mapView addAnnotation:point1];
         
+        btnStartNavigation.hidden = FALSE;
+        
         nodesParser = [[NodesParser alloc] init];
         nodesParser.NodesDelegate = self;
         
@@ -428,6 +445,11 @@
     
     NSInteger currentFloorNumber = 2; //assuming currently the user is on second floor
     
+    startedNavigation = FALSE;
+    btnStartNavigation.hidden = TRUE;
+    [self.mapView removeOverlay:self.polyline];
+
+    
     __weak typeof(self) weakSelf = self;
     
     if (sender.tag == 0) {
@@ -446,7 +468,6 @@
             }];
             
             currentFloorNumber = currentFloorNumber +1;
-            
         }
     } else {
         if (currentFloorNumber >0) {
@@ -466,7 +487,12 @@
         
         currentFloorNumber = currentFloorNumber -1;
     }
-    
+}
+
+#pragma mark Start Navigation Button Clicked
+-(void)startNavigationButtonClicked {
+    startedNavigation = TRUE;
+    NSLog(@"start nav btn clicked");
     
 }
 
