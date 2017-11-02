@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @protocol NodesParserDelegate <NSObject>
 
@@ -22,6 +23,6 @@
 
 @property (nonatomic, weak) id  <NodesParserDelegate> NodesDelegate;
 
--(void) getPathDetails;
+-(void) getPathDetailsWithCurrentLocation:(CLLocation *) currLocation andDestinationLocation:(CLLocation *) destLocation;
 
 @end

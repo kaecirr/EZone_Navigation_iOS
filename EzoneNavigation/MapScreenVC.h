@@ -32,6 +32,10 @@
     
     NSMutableArray  *arrayOfNodesPathPoint;
     
+    CLLocation *clCurrentLocation;//this give users current location
+    
+    CLLocation  *clDestinationLocation; //location from dropping a pin
+    
 }
 
 @property(nonatomic, strong) IALocationManager *locationManager;

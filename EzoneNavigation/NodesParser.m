@@ -18,9 +18,9 @@
     return self;
 }
 
--(void)getPathDetails {
+-(void) getPathDetailsWithCurrentLocation:(CLLocation *) currLocation andDestinationLocation:(CLLocation *) destLocation {
     
-    NSArray *reqObjectsArray = @[@"ComputerScience", @"2", @"-31.97444473", @"115.8599", @"ComputerScience", @"2", @"-31.97222274", @"115.823", @"DJ"];
+    NSArray *reqObjectsArray = @[@"ComputerScience", @"2", [NSString stringWithFormat:@"%f", currLocation.coordinate.longitude] , [NSString stringWithFormat:@"%f", currLocation.coordinate.latitude], @"ComputerScience", @"2", [NSString stringWithFormat:@"%f", destLocation.coordinate.longitude] , [NSString stringWithFormat:@"%f", destLocation.coordinate.latitude], @"DJ"];
 
     NSArray *reqKeysArray = @[@"startBuildingName", @"startFloor", @"startLongitude", @"startLatitude", @"endBuildingName", @"endFloor", @"endLongitude", @"endLatitude", @"algorithm"];
     

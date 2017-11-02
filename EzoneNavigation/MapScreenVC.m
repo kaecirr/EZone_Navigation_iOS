@@ -270,26 +270,26 @@
     
     (void)manager;
     
-    CLLocation *clLocation = [(IALocation*)locations.lastObject location];
-    //NSLog(@"position changed to coordinate (lat,lon): %f, %f", clLocation.coordinate.latitude, clLocation.coordinate.longitude);
+    clCurrentLocation = [(IALocation*)locations.lastObject location];
+    NSLog(@"current position at coordinate (lat,lon): %f, %f", clCurrentLocation.coordinate.latitude, clCurrentLocation.coordinate.longitude);
     
     if (self.circle != nil) {
         [mapView removeOverlay:self.circle];
     }
     
-    self.circle = [MKCircle circleWithCenterCoordinate:clLocation.coordinate radius:1];
+    self.circle = [MKCircle circleWithCenterCoordinate:clCurrentLocation.coordinate radius:1];
     
     [mapView addOverlay:self.circle];
     if (updateCamera) {
         updateCamera = false;
         if (camera == nil) {
             // Ask Map Kit for a camera that looks at the location from an altitude of 300 meters above the eye coordinates.
-            camera = [MKMapCamera cameraLookingAtCenterCoordinate:clLocation.coordinate fromEyeCoordinate:clLocation.coordinate eyeAltitude:300];
+            camera = [MKMapCamera cameraLookingAtCenterCoordinate:clCurrentLocation.coordinate fromEyeCoordinate:clCurrentLocation.coordinate eyeAltitude:300];
             
             // Assign the camera to your map view.
             mapView.camera = camera;
         } else {
-            camera.centerCoordinate = clLocation.coordinate;
+            camera.centerCoordinate = clCurrentLocation.coordinate;
         }
     }
 }
@@ -346,7 +346,9 @@
         
         CLLocationCoordinate2D tapPoint = [self.mapView convertPoint:point toCoordinateFromView:self.view];
         
-        //    NSLog(@"tap point is %f and long is %f",tapPoint.latitude, tapPoint.longitude);
+        NSLog(@"destination location lat is %f and long is %f",tapPoint.latitude, tapPoint.longitude);
+        
+        clDestinationLocation = [[CLLocation alloc] initWithLatitude:tapPoint.latitude longitude:tapPoint.longitude];
         
         
         MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
@@ -358,14 +360,13 @@
         nodesParser = [[NodesParser alloc] init];
         nodesParser.NodesDelegate = self;
         
-//        [self drawLine];
-        
-        [nodesParser getPathDetails];
-    
+        [nodesParser getPathDetailsWithCurrentLocation: clCurrentLocation andDestinationLocation: clDestinationLocation];
     }
 }
 
 -(void) NodesParserDidReceiveData:(NSDictionary *) dictOfNodesParser {
+    
+    
     if ([[dictOfNodesParser valueForKey:@"responseMessage"] isEqualToString:@"SUCCESS"]) {
         arrayOfNodesPathPoint = [[NSMutableArray alloc] init];
         arrayOfNodesPathPoint = [[dictOfNodesParser valueForKey:@"mapData"] valueForKey:@"path"];
@@ -384,47 +385,18 @@
 //            NSLog(@"coordinate location array index %d and value is %@", i, coordLocations[i]);
             
         }
+        [self.mapView removeOverlay:self.polyline];
         
-        MKPolyline *polyLine = [MKPolyline polylineWithCoordinates:coordLocations count:arrayOfNodesPathPoint.count];
-        [self.mapView addOverlay:polyLine];
+        if([self.mapView.overlays isKindOfClass:[MKPolyline class]]) {
+            [self.mapView removeOverlays:self.mapView.overlays];
+        }
+        MKPolyline *mkPolyline = [MKPolyline polylineWithCoordinates:coordLocations count:arrayOfNodesPathPoint.count];
+        [self.mapView addOverlay:mkPolyline];
+        self.polyline = mkPolyline;
         
     }
 }
 -(void) NodesParserDidReceiveError:(NSError *) error {
-    
-}
-
--(void) drawLine {
-    //remove polyline if previously present
-    
-    [self.mapView removeOverlay:self.polyline];
-
-    NSDictionary *dict1 = @{@"location": @"room2.10", @"longitude": @"115.81593823", @"latitude": @"-31.97764684"};
-    NSDictionary *dict2 = @{@"location": @"room2.12", @"longitude": @"115.8599", @"latitude": @"-31.97444473"};
-    NSDictionary *dict3 = @{@"location": @"room2.14", @"longitude": @"31.4", @"latitude": @"29.5"};
-    NSDictionary *dict4 = @{@"location": @"room2.16", @"longitude": @"31.5", @"latitude": @"29.3"};
-    
-    NSArray *pathArray = @[dict1, dict2];
-    
-    //fetch lat long from the array and save it in cllocationcooardinate2d
-    CLLocationCoordinate2D coordinates[pathArray.count];
-
-    for (int i=0; i< pathArray.count; i++) {
-        coordinates[i] = CLLocationCoordinate2DMake([[[pathArray objectAtIndex:i] objectForKey:@"longitude"] floatValue], [[[pathArray objectAtIndex:i] objectForKey:@"latitude"] floatValue]);
-    }
-    
-    
-    // create a polyline with all cooridnates
-    MKPolyline *polyline = [MKPolyline polylineWithCoordinates: coordinates count:pathArray.count];
-    [self.mapView addOverlay:polyline];
-    self.polyline = polyline;
-    
-    //NSLog(@"array is %@",pathArray);
-    
-    // create an MKPolylineView and add it to the map view
-//    self.polyLineView = [[MKPolylineView alloc] initWithPolyline:self.polyline];
-//    self.polyLineView.strokeColor = [UIColor redColor];
-//    self.polyLineView.lineWidth = 5;
     
 }
 
