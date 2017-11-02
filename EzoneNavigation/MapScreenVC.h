@@ -27,7 +27,6 @@
     MKMapCamera *camera;
     Boolean updateCamera;
     
-//    CLLocationManager *clLocationManager;
     NodesParser *nodesParser;
     
     NSMutableArray  *arrayOfNodesPathPoint;
@@ -36,6 +35,9 @@
     
     CLLocation  *clDestinationLocation; //location from dropping a pin
     
+    UIButton    *btnUpFloor;
+    UIButton    *btnDownFloor;
+    
 }
 
 @property(nonatomic, strong) IALocationManager *locationManager;
@@ -43,6 +45,8 @@
 @property (nonatomic, strong) MKPolyline *polyline;
 @property (nonatomic, strong) MKPolylineView *polyLineView;
 
+
 -(void) requestLocation;
+-(void) upDownFloorChangeButtonClicked:(UIButton *) sender;
 
 @end

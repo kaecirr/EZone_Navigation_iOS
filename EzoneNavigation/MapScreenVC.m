@@ -106,17 +106,37 @@
     updateCamera = true;
     
     self.mapView = [MKMapView new];
+
     [self.view addSubview:self.mapView];
     self.mapView.frame = self.view.bounds;
     self.mapView.delegate = self;
-    
+
+    //long press to place a marker
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTap:)];
     
     [self.mapView addGestureRecognizer:longPressRecognizer];
     
+    //UIButtons Up and down to change floor plans
+    btnUpFloor = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnUpFloor addTarget:self action:@selector(upDownFloorChangeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [btnUpFloor setImage:[UIImage imageNamed:@"up_button.png"] forState:UIControlStateNormal];
+    btnUpFloor.frame = CGRectMake(self.view.frame.size.width - 60.0, self.view.frame.origin.y + 80.0, 40.0, 40.0);
+    btnUpFloor.backgroundColor = [UIColor clearColor];
+    btnUpFloor.tag = 0;
+    [self.mapView addSubview:btnUpFloor];
     
+    btnDownFloor = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnDownFloor addTarget:self action:@selector(upDownFloorChangeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [btnDownFloor setImage:[UIImage imageNamed:@"down_button.png"] forState:UIControlStateNormal];
+    btnDownFloor.frame = CGRectMake(self.view.frame.size.width - 60.0, btnUpFloor.frame.size.height + btnUpFloor.frame.origin.y + 10.0, 40.0, 40.0);
+    btnDownFloor.backgroundColor = [UIColor clearColor];
+    btnDownFloor.tag = 1;
+    [self.mapView addSubview:btnDownFloor];
+
     
     [self requestLocation];
+
+    
 }
 
 
@@ -400,6 +420,55 @@
     
 }
 
+#pragma mark Up down button method
+-(void)upDownFloorChangeButtonClicked:(UIButton *)sender {
+    //change floor plan
+    
+    NSArray *arrOfFloorPlanIds = @[@"5ec55154-e905-40e2-8632-05ba6f71d4ae", @"eec18725-2b45-47ac-aa8e-b39eb2de9b74", @"c275745f-fcf5-4759-896e-b771ab945a66"];
+    
+    NSInteger currentFloorNumber = 2; //assuming currently the user is on second floor
+    
+    __weak typeof(self) weakSelf = self;
+    
+    if (sender.tag == 0) {
+        if (currentFloorNumber <2) {
+            //change floor plan to currentFloorNumber +1
+            
+            floorPlanFetch = [self.resourceManager fetchFloorPlanWithId:[arrOfFloorPlanIds objectAtIndex:(currentFloorNumber +1)] andCompletion:^(IAFloorPlan *floorPlan, NSError *error) {
+                
+                if (!error) {
+                    self.floorPlan = floorPlan;
+                    [weakSelf saveFloorPlan:floorPlan key:[arrOfFloorPlanIds objectAtIndex:(currentFloorNumber +1) ]];
+                    [weakSelf fetchImage:floorPlan];
+                } else {
+                    NSLog(@"There was error during floorplan fetch: %@", error);
+                }
+            }];
+            
+            currentFloorNumber = currentFloorNumber +1;
+            
+        }
+    } else {
+        if (currentFloorNumber >0) {
+            //change floor plan to currentFloorNumber -1
+            floorPlanFetch = [self.resourceManager fetchFloorPlanWithId:[arrOfFloorPlanIds objectAtIndex:(currentFloorNumber -1)] andCompletion:^(IAFloorPlan *floorPlan, NSError *error) {
+                
+                if (!error) {
+                    self.floorPlan = floorPlan;
+                    [weakSelf saveFloorPlan:floorPlan key:[arrOfFloorPlanIds objectAtIndex:(currentFloorNumber -1) ]];
+                    [weakSelf fetchImage:floorPlan];
+                } else {
+                    NSLog(@"There was error during floorplan fetch: %@", error);
+                }
+            }];
+        }
+        NSLog(@"button down clicked");
+        
+        currentFloorNumber = currentFloorNumber -1;
+    }
+    
+    
+}
 
 #pragma mark Warning Method
 
