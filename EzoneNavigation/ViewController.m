@@ -35,11 +35,12 @@
 }
 
 #pragma mark Loading Methods
+
 -(void)loadSreenUI {
     
     imgViewBG = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    imgViewBG.image = [UIImage imageNamed:@"spalsh_2.png"];
+    imgViewBG.image = [UIImage imageNamed:@"splash_bg.png"];
     
     [self.view addSubview:imgViewBG];
     

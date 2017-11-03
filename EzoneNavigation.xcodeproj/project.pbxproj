@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0CD0266C6C6E8B76D0595D28 /* Pods_EzoneNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71C8C1894777A8C9DC5B1C5 /* Pods_EzoneNavigation.framework */; };
 		7A1080D11FA9D688000B6C35 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1080D01FA9D67A000B6C35 /* CoreLocation.framework */; };
-		7A111DB71FAC150D0068A712 /* spalsh_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A111DB61FAC150C0068A712 /* spalsh_2.png */; };
+		7A111DB91FAC2DB90068A712 /* splash_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A111DB81FAC2DB90068A712 /* splash_bg.png */; };
 		7A15E10D1F64005D00054933 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E10C1F64005D00054933 /* main.m */; };
 		7A15E1101F64005D00054933 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E10F1F64005D00054933 /* AppDelegate.m */; };
 		7A15E1131F64005D00054933 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A15E1121F64005D00054933 /* ViewController.m */; };
@@ -47,7 +47,7 @@
 /* Begin PBXFileReference section */
 		07479EE18D1A8B7FB9D1B0F8 /* Pods-EzoneNavigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EzoneNavigation.release.xcconfig"; path = "Pods/Target Support Files/Pods-EzoneNavigation/Pods-EzoneNavigation.release.xcconfig"; sourceTree = "<group>"; };
 		7A1080D01FA9D67A000B6C35 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		7A111DB61FAC150C0068A712 /* spalsh_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spalsh_2.png; sourceTree = "<group>"; };
+		7A111DB81FAC2DB90068A712 /* splash_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_bg.png; sourceTree = "<group>"; };
 		7A15E1081F64005D00054933 /* EzoneNavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EzoneNavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A15E10C1F64005D00054933 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A15E10E1F64005D00054933 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			children = (
 				7A6543E31FABA1D100227349 /* down_button.png */,
 				7A6543E41FABA1D200227349 /* up_button.png */,
-				7A111DB61FAC150C0068A712 /* spalsh_2.png */,
+				7A111DB81FAC2DB90068A712 /* splash_bg.png */,
 				7A15E13E1F64061000054933 /* Podfile */,
 				7A15E10A1F64005D00054933 /* EzoneNavigation */,
 				7A15E1241F64005D00054933 /* EzoneNavigationTests */,
@@ -325,8 +325,8 @@
 				7A15E11B1F64005D00054933 /* LaunchScreen.storyboard in Resources */,
 				7A15E1181F64005D00054933 /* Assets.xcassets in Resources */,
 				7A6543E51FABA1D200227349 /* down_button.png in Resources */,
+				7A111DB91FAC2DB90068A712 /* splash_bg.png in Resources */,
 				7A15E13F1F64061000054933 /* Podfile in Resources */,
-				7A111DB71FAC150D0068A712 /* spalsh_2.png in Resources */,
 				7A6543E61FABA1D200227349 /* up_button.png in Resources */,
 				7A15E1161F64005D00054933 /* Main.storyboard in Resources */,
 			);
