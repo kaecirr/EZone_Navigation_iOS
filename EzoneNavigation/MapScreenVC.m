@@ -138,9 +138,10 @@
     //start nav btn used to start the navigation while updating the path user current location. currently its disabled
     btnStartNavigation = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnStartNavigation addTarget:self action:@selector(startNavigationButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    btnStartNavigation.frame = CGRectMake(0, self.view.frame.size.height - 30.0, self.view.frame.size.width, 30.0);
+    btnStartNavigation.frame = CGRectMake(0, self.view.frame.size.height - 40.0, self.view.frame.size.width, 40.0);
     [btnStartNavigation setTitle:@"Start Navigation" forState:UIControlStateNormal];
-    btnStartNavigation.backgroundColor = [UIColor blueColor];
+    btnStartNavigation.backgroundColor = [UIColor colorWithRed:51.0 green:153.0 blue:255.0 alpha:1.0];
+
     btnStartNavigation.hidden = TRUE;
     [self.view addSubview:btnStartNavigation];
     
@@ -492,8 +493,8 @@
 #pragma mark Start Navigation Button Clicked
 -(void)startNavigationButtonClicked {
     startedNavigation = TRUE;
+    [btnStartNavigation setHighlighted:TRUE];
     NSLog(@"start nav btn clicked");
-    
 }
 
 #pragma mark Warning Method

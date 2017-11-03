@@ -15,6 +15,8 @@
 @interface ViewController : UIViewController <IALocationManagerDelegate> {
     NSTimer *timer;
     
+    UIImageView *imgViewBG;
+    
 }
 
 

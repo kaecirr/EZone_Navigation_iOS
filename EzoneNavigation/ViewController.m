@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
     [self.navigationController setNavigationBarHidden:YES];
     
@@ -37,12 +37,12 @@
 #pragma mark Loading Methods
 -(void)loadSreenUI {
     
-    UILabel *lblTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height/2 - 20.0, self.view.frame.size.width, 20.0)];
+    imgViewBG = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    lblTitle.text = @"EZONE NAVIGATION";
-    lblTitle.textColor = [UIColor blackColor];
-    lblTitle.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:lblTitle];
+    imgViewBG.image = [UIImage imageNamed:@"spalsh_2.png"];
+    
+    [self.view addSubview:imgViewBG];
+    
 }
 
 -(void)loadNextScreen {
